@@ -1,0 +1,10 @@
+_base_: ../base.yaml
+project:
+  experiment_name: A1_tda_only
+model:
+  name: tda_only
+loss:
+  response_kd_weight: 0.0
+  feature_kd_weight: 0.0
+  visual_aux_weight: 0.0
+  topology_aux_weight: 0.0

@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "topokd-research"
+version = "1.0.0"
+description = "Reproducible topology-aware knowledge-distillation research pipeline for COVID-19 CT classification"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [
+  {name = "Ibadat Ali"},
+  {name = "Shawaiz Ali"},
+  {name = "Muhammad Abdullah"},
+  {name = "Muhammad Usama"}
+]
+dependencies = [
+  "torch>=2.2", "torchvision>=0.17", "numpy>=1.26", "pandas>=2.1",
+  "scikit-learn>=1.4", "scipy>=1.11", "matplotlib>=3.8", "Pillow>=10.0",
+  "PyYAML>=6.0", "tqdm>=4.66", "gudhi>=3.9", "opencv-python-headless>=4.9",
+  "tensorboard>=2.16", "psutil>=5.9"
+]
+
+[project.scripts]
+topokd-train = "topokd.cli:train_main"
+topokd-evaluate = "topokd.cli:evaluate_main"
+topokd-infer = "topokd.cli:infer_main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"

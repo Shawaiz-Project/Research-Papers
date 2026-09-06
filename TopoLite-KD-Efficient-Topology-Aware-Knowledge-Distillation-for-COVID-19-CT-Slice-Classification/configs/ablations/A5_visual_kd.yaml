@@ -1,0 +1,13 @@
+_base_: ../base.yaml
+project:
+  experiment_name: A5_visual_kd
+model:
+  name: visual_only
+loss:
+  response_kd_weight: 0.3
+  feature_kd_weight: 0.0
+  visual_aux_weight: 0.0
+  topology_aux_weight: 0.0
+  supervised_weight: 0.7
+topology:
+  enabled: false

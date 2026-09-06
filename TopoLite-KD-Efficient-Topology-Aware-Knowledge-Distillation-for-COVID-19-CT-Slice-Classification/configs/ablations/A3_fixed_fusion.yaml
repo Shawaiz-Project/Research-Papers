@@ -1,0 +1,8 @@
+_base_: ../base.yaml
+project:
+  experiment_name: A3_fixed_fusion
+model:
+  name: topolite_kd
+  fusion: fixed
+loss:
+  response_kd_weight: 0.0

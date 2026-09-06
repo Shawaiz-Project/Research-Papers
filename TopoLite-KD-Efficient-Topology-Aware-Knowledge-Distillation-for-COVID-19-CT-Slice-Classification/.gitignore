@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Generated results (large; not committed)
+results/
+*.pt
+*.pth
+
+# Topology cache (large; not committed)
+*.pkl
+*.npy
+
+# Logs
+*.log
+tensorboard/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Large zip archives
+*.zip
+*.tar.gz
+*.sha256

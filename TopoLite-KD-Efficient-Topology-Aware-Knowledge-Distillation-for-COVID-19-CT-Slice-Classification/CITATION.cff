@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+title: TopoKD Research Repository
+message: If you use this software, cite the associated research paper and this software repository.
+type: software
+authors:
+  - family-names: Ali
+    given-names: Ibadat
+  - family-names: Ali
+    given-names: Shawaiz
+  - family-names: Abdullah
+    given-names: Muhammad
+  - family-names: Usama
+    given-names: Muhammad
+version: 1.0.0
+date-released: 2026-07-09
+license: Apache-2.0

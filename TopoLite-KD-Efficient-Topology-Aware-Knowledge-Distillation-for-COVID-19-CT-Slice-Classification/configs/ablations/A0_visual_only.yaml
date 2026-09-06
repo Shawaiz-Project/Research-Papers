@@ -1,0 +1,12 @@
+_base_: ../base.yaml
+project:
+  experiment_name: A0_visual_only
+model:
+  name: visual_only
+loss:
+  response_kd_weight: 0.0
+  feature_kd_weight: 0.0
+  visual_aux_weight: 0.0
+  topology_aux_weight: 0.0
+topology:
+  enabled: false

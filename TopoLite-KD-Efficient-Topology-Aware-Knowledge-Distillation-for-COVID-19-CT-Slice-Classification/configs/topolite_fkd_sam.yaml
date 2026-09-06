@@ -1,0 +1,21 @@
+_base_: base.yaml
+project:
+  experiment_name: topolite_fkd_sam
+  notes: TopoLite extension using response KD, intermediate feature KD, and SAM optimization.
+    Exact historical loss weights were not archived; these are explicit configurable
+    defaults.
+model:
+  name: topolite_fkd_sam
+loss:
+  response_kd_weight: 0.35
+  feature_kd_weight: 0.2
+  supervised_weight: 0.45
+  response_temperature: 3.0
+  visual_aux_weight: 0.0
+  topology_aux_weight: 0.0
+optimizer:
+  name: sam
+  learning_rate: 0.0001
+  sam_rho: 0.05
+training:
+  amp: false

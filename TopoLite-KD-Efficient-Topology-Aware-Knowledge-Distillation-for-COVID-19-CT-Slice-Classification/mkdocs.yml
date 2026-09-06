@@ -1,0 +1,20 @@
+site_name: TopoKD Research Repository
+site_description: Reproducible topology-aware knowledge distillation for COVID-19
+  CT classification
+repo_name: TopoKD Research
+nav:
+- Home: index.md
+- Methodology: methodology.md
+- Ablations: ablations.md
+- TopoFM-Slice-v1: topofm_slice.md
+- Implementation Status: implementation_status.md
+- Reproducibility: reproducibility.md
+- Result Schema: results_schema.md
+- Citation: citation.md
+theme:
+  name: material
+markdown_extensions:
+- admonition
+- tables
+- toc:
+    permalink: true

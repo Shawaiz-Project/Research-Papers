@@ -1,0 +1,59 @@
+# Archival research records supplied by the project authors.
+# These values are never injected into generated evaluation files.
+# Reproduction requires the matching frozen manifest, checkpoints, and resolved config.
+records:
+  - model: TopoLite-KD
+    status: successful_main_experiment
+    test_size: 373
+    parameters_approx: 197710
+    metrics:
+      accuracy: 0.9677
+      sensitivity: 0.9840
+      specificity: 0.9511
+      f1: 0.9686
+      mcc: 0.9359
+      auroc: 0.9866
+      auprc: 0.9821
+    calibration_record:
+      temperature: 0.9874
+      threshold: 0.4879
+
+  - model: TopoLite-MSF-KD
+    status: negative_extended_experiment
+    parameters: 1122465
+    validation_metrics:
+      accuracy: 0.8952
+      auroc: 0.9434
+      mcc: 0.7904
+      sensitivity: 0.8880
+      specificity: 0.9024
+    best_epoch: 50
+    threshold: 0.461
+
+  - model: TopoFM-Slice-v1
+    status: successful_slice_level_experiment_not_full_domain_generalization
+    test_size: 373
+    metrics:
+      accuracy: 0.9517
+      sensitivity: 0.9574
+      specificity: 0.9459
+      f1: 0.9524
+      mcc: 0.9035
+      auroc: 0.9922
+      auprc: 0.9919
+      brier: 0.0453
+      nll: 0.1819
+      ece: 0.0266
+    confirmed_components:
+      - DINOv2 visual backbone
+      - learnable topology representation
+      - cross-attention fusion
+      - supervised contrastive loss
+      - validation-only calibration
+    not_tested_in_this_run:
+      - patient-level 2.5D aggregation
+      - VREx
+      - domain-adversarial training
+      - soft masks
+      - external validation
+      - model ensembling

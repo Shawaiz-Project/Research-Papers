@@ -1,0 +1,57 @@
+_base_: base.yaml
+project:
+  experiment_name: topofm_slice_v1
+  notes: >-
+    Component-faithful reconstruction of the completed slice-level experiment:
+    DINOv2 + learnable multi-scale topology tokens + bidirectional cross-attention
+    + supervised contrastive learning + validation-only calibration. Exact archived
+    hidden dimensions and loss weights were unavailable, so explicit reconstruction
+    defaults are used here and must not be represented as the historical resolved config.
+data:
+  grayscale: false
+  batch_size: 16
+  normalization:
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]
+topology:
+  mode: multiscale_tokens
+model:
+  name: topofm_slice_v1
+  input_channels: 3
+  dropout: 0.10
+  dinov2:
+    architecture: dinov2_vits14
+    pretrained: true
+    freeze: true
+    repository_path: null
+    checkpoint: null
+  topofm:
+    fusion_dim: 192
+    attention_heads: 6
+    topology_encoder:
+      embedding_dim: 192
+      heads: 6
+      layers: 2
+      feedforward_dim: 768
+loss:
+  supervised_weight: 0.90
+  response_kd_weight: 0.0
+  feature_kd_weight: 0.0
+  visual_aux_weight: 0.0
+  topology_aux_weight: 0.0
+  supervised_contrastive_weight: 0.10
+optimizer:
+  name: adamw
+  learning_rate: 0.0002
+training:
+  epochs: 50
+evaluation:
+  gradcam_samples_per_class: 0
+domain_generalization:
+  soft_mask:
+    enabled: false
+  domain_adversarial:
+    enabled: false
+  num_domains: 1
+  vrex_weight: 0.0
+  domain_adversarial_weight: 0.0

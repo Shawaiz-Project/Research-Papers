@@ -1,0 +1,5 @@
+_base_: ../topolite_kd.yaml
+project:
+  experiment_name: A7_no_coordinate_attention
+model:
+  coordinate_attention: false

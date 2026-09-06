@@ -1,0 +1,22 @@
+_base_: base.yaml
+project:
+  experiment_name: topolite_msf_kd
+  notes: Multi-scale, multi-filtration topology-token extension with H0/H1 transformers,
+    bidirectional cross-attention, topology conditioning and routed fusion.
+topology:
+  mode: multiscale_tokens
+model:
+  name: topolite_msf_kd
+  visual_embedding_dim: 96
+  topology_embedding_dim: 96
+  fusion_dim: 96
+loss:
+  supervised_weight: 0.55
+  response_kd_weight: 0.3
+  response_temperature: 3.0
+  feature_kd_weight: 0.0
+  visual_aux_weight: 0.05
+  topology_aux_weight: 0.05
+  supervised_contrastive_weight: 0.05
+training:
+  epochs: 50

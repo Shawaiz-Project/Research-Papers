@@ -1,0 +1,8 @@
+_base_: ../base.yaml
+project:
+  experiment_name: A4_gated_no_kd
+model:
+  name: topolite_kd
+  fusion: gated
+loss:
+  response_kd_weight: 0.0

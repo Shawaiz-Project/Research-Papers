@@ -1,0 +1,43 @@
+# Copy to a .yaml file only after the exact archived values are available.
+# This file is intentionally not executable as-is.
+_base_: topolite_kd.yaml
+project:
+  experiment_name: [ARCHIVED_EXPERIMENT_NAME]
+data:
+  root: [ARCHIVED_DATASET_ROOT]
+  manifest: [ARCHIVED_SPLIT_MANIFEST_PATH]
+  split_seed: [ARCHIVED_SPLIT_SEED]
+  augmentation:
+    horizontal_flip: [ARCHIVED_HORIZONTAL_FLIP_PROBABILITY]
+    rotation_degrees: [ARCHIVED_ROTATION_DEGREES]
+    affine_translate: [ARCHIVED_AFFINE_TRANSLATION]
+    affine_scale: [ARCHIVED_AFFINE_SCALE_RANGE]
+    brightness: [ARCHIVED_BRIGHTNESS_JITTER]
+    contrast: [ARCHIVED_CONTRAST_JITTER]
+model:
+  teacher:
+    checkpoint: [ARCHIVED_TEACHER_CHECKPOINT_PATH]
+    backbone_checkpoint: [ARCHIVED_IMAGENET_BACKBONE_WEIGHTS_PATH]
+loss:
+  supervised_weight: [ARCHIVED_SUPERVISED_WEIGHT]
+  response_kd_weight: [ARCHIVED_RESPONSE_KD_WEIGHT]
+  response_temperature: [ARCHIVED_RESPONSE_TEMPERATURE]
+  feature_kd_weight: [ARCHIVED_FEATURE_KD_WEIGHT]
+  visual_aux_weight: [ARCHIVED_VISUAL_AUX_WEIGHT]
+  topology_aux_weight: [ARCHIVED_TOPOLOGY_AUX_WEIGHT]
+optimizer:
+  name: [ARCHIVED_OPTIMIZER_NAME]
+  learning_rate: [ARCHIVED_LEARNING_RATE]
+  weight_decay: [ARCHIVED_WEIGHT_DECAY]
+scheduler:
+  name: [ARCHIVED_SCHEDULER_NAME]
+  warmup_epochs: [ARCHIVED_WARMUP_EPOCHS]
+  min_learning_rate: [ARCHIVED_MINIMUM_LEARNING_RATE]
+training:
+  epochs: [ARCHIVED_EPOCH_COUNT]
+  seed: [ARCHIVED_TRAINING_SEED]
+  early_stopping_patience: [ARCHIVED_EARLY_STOPPING_PATIENCE]
+  resume: [ARCHIVED_STUDENT_CHECKPOINT_PATH]
+evaluation:
+  threshold_strategy: [ARCHIVED_THRESHOLD_STRATEGY]
+  ece_bins: [ARCHIVED_ECE_BIN_COUNT]

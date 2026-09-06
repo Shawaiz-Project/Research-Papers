@@ -1,0 +1,159 @@
+project:
+  name: topokd_research
+  output_root: results
+  experiment_name: base
+  notes: Base configuration. Override with a model-specific config.
+data:
+  root: /kaggle/input/datasets/plameneduardo/sarscov2-ctscan-dataset
+  manifest: artifacts/split_manifest.csv
+  image_size: 224
+  grayscale: true
+  class_names:
+  - COVID
+  - Non-COVID
+  positive_class: COVID
+  extensions:
+  - .png
+  - .jpg
+  - .jpeg
+  - .bmp
+  - .tif
+  - .tiff
+  train_fraction: 0.7
+  val_fraction: 0.15
+  test_fraction: 0.15
+  split_seed: 42
+  remove_exact_duplicates: true
+  patient_id_regex: null
+  batch_size: 32
+  num_workers: 2
+  pin_memory: true
+  persistent_workers: true
+  augmentation:
+    horizontal_flip: 0.5
+    rotation_degrees: 10
+    affine_translate: 0.03
+    affine_scale:
+    - 0.95
+    - 1.05
+    brightness: 0.08
+    contrast: 0.08
+  normalization:
+    mean:
+    - 0.5
+    std:
+    - 0.5
+topology:
+  enabled: true
+  cache_dir: artifacts/tda_cache
+  mode: descriptor
+  descriptor_dim: 134
+  resize: 64
+  filtrations:
+  - sublevel
+  - superlevel
+  homology_dims:
+  - 0
+  - 1
+  persistence_min: 0.0
+  standardization_path: artifacts/tda_standardizer.npz
+  multiscale_sizes:
+  - 32
+  - 64
+  - 128
+  multiscale_filtrations:
+  - sublevel
+  - superlevel
+  - gradient
+  pairs_per_group: 8
+  persistence_thresholds:
+  - 0.01
+  - 0.03
+  - 0.05
+  - 0.1
+  betti_points: 16
+  binary_thresholds:
+  - 0.2
+  - 0.3
+  - 0.4
+  - 0.5
+  - 0.6
+  - 0.7
+  - 0.8
+model:
+  name: topolite_kd
+  num_classes: 1
+  input_channels: 1
+  visual_channels:
+  - 24
+  - 32
+  - 48
+  - 96
+  - 160
+  visual_embedding_dim: 64
+  topology_embedding_dim: 64
+  fusion_dim: 64
+  dropout: 0.2
+  coordinate_attention: true
+  fusion: gated
+  auxiliary_heads: true
+  teacher:
+    architecture: efficientnet_b0
+    pretrained: true
+    checkpoint: artifacts/teacher_best.pt
+    freeze: true
+    backbone_checkpoint: null
+  msf:
+    embedding_dim: 96
+    transformer_heads: 4
+    transformer_layers: 2
+    transformer_ffn_dim: 512
+    router_experts: 3
+loss:
+  supervised: bce_with_logits
+  pos_weight: null
+  label_smoothing: 0.0
+  response_kd_weight: 0.0
+  response_temperature: 3.0
+  feature_kd_weight: 0.0
+  visual_aux_weight: 0.0
+  topology_aux_weight: 0.0
+  supervised_contrastive_weight: 0.0
+  supervised_weight: 1.0
+optimizer:
+  name: adamw
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  betas:
+  - 0.9
+  - 0.999
+  sam_rho: 0.05
+  sam_adaptive: false
+scheduler:
+  name: cosine
+  warmup_epochs: 3
+  min_learning_rate: 5.0e-06
+training:
+  epochs: 50
+  seed: 42
+  deterministic: true
+  amp: true
+  gradient_clip_norm: 5.0
+  early_stopping_patience: 12
+  monitor: val_mcc
+  monitor_mode: max
+  save_every_epochs: 0
+  resume: null
+evaluation:
+  threshold_strategy: youden
+  fixed_threshold: 0.5
+  temperature_scaling: true
+  bootstrap_samples: 2000
+  bootstrap_seed: 2026
+  confidence_level: 0.95
+  ece_bins: 15
+  gradcam_samples_per_class: 12
+  save_individual_gradcams: true
+  target_layer: visual_encoder.stages.3
+  profile_warmup: 20
+  profile_iterations: 100

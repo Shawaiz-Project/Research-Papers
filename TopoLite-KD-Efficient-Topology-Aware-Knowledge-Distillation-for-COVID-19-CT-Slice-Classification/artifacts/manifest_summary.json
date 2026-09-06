@@ -1,0 +1,24 @@
+{
+  "class_counts": {
+    "COVID": 1250,
+    "Non-COVID": 1229
+  },
+  "discovered": 2481,
+  "duplicates_removed": 2,
+  "patient_grouped": false,
+  "retained": 2479,
+  "split_class_counts": {
+    "test:COVID": 188,
+    "test:Non-COVID": 184,
+    "train:COVID": 874,
+    "train:Non-COVID": 861,
+    "val:COVID": 188,
+    "val:Non-COVID": 184
+  },
+  "split_counts": {
+    "test": 372,
+    "train": 1735,
+    "val": 372
+  },
+  "split_seed": 42
+}

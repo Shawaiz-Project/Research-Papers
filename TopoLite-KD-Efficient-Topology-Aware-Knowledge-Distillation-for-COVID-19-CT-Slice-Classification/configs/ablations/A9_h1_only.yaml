@@ -1,0 +1,7 @@
+_base_: ../topolite_kd.yaml
+project:
+  experiment_name: A9_h1_only
+topology:
+  homology_dims:
+  - 1
+  descriptor_dim: 134

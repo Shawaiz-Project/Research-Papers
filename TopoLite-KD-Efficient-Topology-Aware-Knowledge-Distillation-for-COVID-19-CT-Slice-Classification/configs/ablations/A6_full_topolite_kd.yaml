@@ -1,0 +1,3 @@
+_base_: ../topolite_kd.yaml
+project:
+  experiment_name: A6_full_topolite_kd

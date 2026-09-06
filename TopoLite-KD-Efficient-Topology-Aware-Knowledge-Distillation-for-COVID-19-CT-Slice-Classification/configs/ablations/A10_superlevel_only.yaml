@@ -1,0 +1,7 @@
+_base_: ../topolite_kd.yaml
+project:
+  experiment_name: A10_superlevel_only
+topology:
+  filtrations:
+  - superlevel
+  descriptor_dim: 134

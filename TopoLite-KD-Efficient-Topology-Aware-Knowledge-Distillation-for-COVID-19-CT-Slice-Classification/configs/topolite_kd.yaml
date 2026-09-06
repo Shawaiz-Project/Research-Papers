@@ -1,0 +1,22 @@
+_base_: base.yaml
+project:
+  experiment_name: topolite_kd
+  notes: "Paper-aligned TopoLite-KD reconstruction: 24\u219232\u219248\u219296\u2192\
+    160 visual branch, Coordinate Attention after stages 2/3, fixed 134-D PH descriptor,\
+    \ 134\u2192128\u219264 TDA MLP, interaction-aware gated fusion, and EfficientNet-B0\
+    \ response KD."
+model:
+  name: topolite_kd
+  fusion: gated
+  coordinate_attention: true
+  auxiliary_heads: true
+loss:
+  supervised_weight: 0.6
+  response_kd_weight: 0.3
+  response_temperature: 3.0
+  feature_kd_weight: 0.0
+  visual_aux_weight: 0.05
+  topology_aux_weight: 0.05
+  supervised_contrastive_weight: 0.0
+optimizer:
+  name: adamw

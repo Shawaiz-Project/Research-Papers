@@ -1,0 +1,12 @@
+_base_: base.yaml
+project:
+  experiment_name: baseline_cnn_tda
+  notes: "Standard custom CNN + 134-D TDA concatenation baseline."
+model:
+  name: baseline_cnn_tda
+  fusion: concat
+  coordinate_attention: false
+loss:
+  response_kd_weight: 0.0
+  visual_aux_weight: 0.0
+  topology_aux_weight: 0.0
