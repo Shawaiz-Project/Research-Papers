@@ -425,7 +425,7 @@ python scripts/run_pipeline.py --config configs/topolite_kd.yaml --device cuda
 ```bibtex
 @software{ali2026topokd,
   title   = {TopoLite-KD: Topology-Aware Knowledge Distillation for COVID-19 CT Classification},
-  author  = {Ali, Ibadat and Ali, Shawaiz and Abdullah, Muhammad and Usama, Muhammad},
+  author  = { Ibadat Ali, and Shawaiz Ali and Muhammad Abdullah, and Muhammad Usama },
   year    = {2026},
   version = {1.0.0},
   license = {Apache-2.0},
